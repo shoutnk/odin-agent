@@ -22,7 +22,7 @@
 #include <click/etheraddress.hh>
 #include <click/hashtable.hh>
 #include <click/ipaddress.hh>
-#include <click/deque.hh>
+#include <click/dequeue.hh>
 #include <elements/wifi/availablerates.hh>
 CLICK_DECLS
 
