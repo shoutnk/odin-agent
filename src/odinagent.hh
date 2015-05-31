@@ -122,6 +122,7 @@ public:
     handler_report_mean, 
     handler_update_signal_strength,
     handler_signal_strength_offset,
+    handler_spectral_scan,
   };
 
   // Rx-stats about stations
