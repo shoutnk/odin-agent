@@ -30,11 +30,11 @@ control :: ControlSocket("TCP", 6777);
 chatter :: ChatterSocket("TCP", 6778);
 
 // ----------------Packets going down
-FromHost(ap, HEADROOM 50)
+FromHost(tap0, HEADROOM 50)
   -> fhcl :: Classifier(12/0806 20/0001, -)
   -> fh_arpr :: ARPResponder(172.17.2.51 e8:39:df:4c:7c:e3) // Resolve STA's ARP
   -> ARPPrint("Resolving client's ARP by myself")
-  -> ToHost(ap)
+  -> ToHost(tap0)
 '''
 
 print '''
@@ -86,11 +86,11 @@ odinagent[1]
 // ARP Fast path fail. Re-write MAC address
 // to reflect datapath or learning switch will drop it
 arp_resp[1]
-  -> ToHost(ap)
+  -> ToHost(tap0)
 
 
 // Non ARP packets. Re-write MAC address to
 // reflect datapath or learning switch will drop it
 arp_c[1]
-  -> ToHost(ap)
+  -> ToHost(tap0)
 '''
